@@ -5,8 +5,6 @@ Authors: Yaël Dillies, Bhavik Mehta
 -/
 import LeanCamCombi.SimplicialComplex.Basic
 
-#align_import simplicial_complex.finite
-
 /-!
 # Finite simplicial complexes
 -/

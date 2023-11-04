@@ -1,7 +1,5 @@
 import Mathlib.Data.Set.Pointwise.SMul
 
-#align_import mathlib.data.set.pointwise.smul
-
 open MulOpposite
 
 open scoped Pointwise

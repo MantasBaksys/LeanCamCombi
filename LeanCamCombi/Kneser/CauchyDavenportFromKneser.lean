@@ -7,8 +7,6 @@ import LeanCamCombi.Mathlib.Data.Finset.Pointwise
 import LeanCamCombi.Mathlib.GroupTheory.SpecificGroups.Cyclic
 import LeanCamCombi.Kneser.Kneser
 
-#align_import LeanCamCombi.Kneser.cauchy_davenport_from_kneser
-
 /-!
 # The Cauchy-Davenport lemma as a corollary of Kneser's lemma
 

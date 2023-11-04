@@ -1,7 +1,5 @@
 import Mathlib.GroupTheory.OrderOfElement
 
-#align_import mathlib.group_theory.order_of_element
-
 --TODO: Turn `is_of_fin_order_iff_coe` around. Rename to `subgroup.is_of_fin_order_coe`
 --TODO: Turn `is_of_fin_order_iff_coe` around. Rename to `subgroup.is_of_fin_order_coe`
 open Function Set Subgroup Submonoid

@@ -1,7 +1,5 @@
 import Mathlib.GroupTheory.SpecificGroups.Cyclic
 
-#align_import mathlib.group_theory.specific_groups.cyclic
-
 instance {n : ℕ} : IsAddCyclic (ZMod n) :=
   ⟨⟨1, fun x => (ZMod.int_cast_surjective x).imp <| by simp⟩⟩
 

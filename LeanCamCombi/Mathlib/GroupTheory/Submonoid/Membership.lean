@@ -1,7 +1,5 @@
 import Mathlib.GroupTheory.Submonoid.Membership
 
-#align_import mathlib.group_theory.submonoid.membership
-
 open Set
 
 namespace Submonoid

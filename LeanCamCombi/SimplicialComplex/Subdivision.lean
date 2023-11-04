@@ -6,8 +6,6 @@ Authors: Yaël Dillies, Bhavik Mehta
 import Mathlib.Analysis.SpecificLimits.Basic
 import LeanCamCombi.SimplicialComplex.Basic
 
-#align_import simplicial_complex.subdivision
-
 /-!
 # Subdivision of simplicial complexes
 -/

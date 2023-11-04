@@ -7,8 +7,6 @@ import Mathlib.Analysis.Convex.SimplicialComplex.Basic
 import Mathlib.Data.Finset.Slice
 import LeanCamCombi.SimplicialComplex.Basic
 
-#align_import simplicial_complex.pure
-
 /-!
 # Pure simplicial complexes
 -/

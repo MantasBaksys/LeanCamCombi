@@ -5,8 +5,6 @@ Authors: Yaël Dillies, Bhavik Mehta
 -/
 import LeanCamCombi.SimplicialComplex.Pure
 
-#align_import simplicial_complex.skeleton
-
 /-!
 # Skeleton of a simplicial complex
 -/

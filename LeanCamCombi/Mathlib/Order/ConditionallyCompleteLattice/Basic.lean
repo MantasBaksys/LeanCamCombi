@@ -1,7 +1,5 @@
 import Mathlib.Order.ConditionallyCompleteLattice.Basic
 
-#align_import mathlib.order.conditionally_complete_lattice.basic
-
 section
 
 variable {ι : Sort _} {α : Type*} [ConditionallyCompleteLinearOrderBot α] {f : ι → α} {a : α}

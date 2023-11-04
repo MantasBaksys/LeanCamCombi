@@ -8,8 +8,6 @@ import LeanCamCombi.Mathlib.GroupTheory.Subgroup.Basic
 import LeanCamCombi.Mathlib.GroupTheory.Subgroup.Stabilizer
 import LeanCamCombi.Kneser.Mathlib
 
-#align_import LeanCamCombi.Kneser.mulStab
-
 /-!
 # Stabilizer of a finset
 
