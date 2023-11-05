@@ -314,6 +314,8 @@ instance moduleRight [Preorder α] [Semiring 𝕜] [AddCommMonoid 𝕝] [Module 
   Function.Injective.module _ ⟨⟨((⇑) : IncidenceAlgebra 𝕝 α → α → α → 𝕝), coe_zero⟩, coe_add⟩
     FunLike.coe_injective coe_smul'
 
+#exit
+
 instance algebraRight [PartialOrder α] [LocallyFiniteOrder α] [DecidableEq α] [CommSemiring 𝕜]
     [CommSemiring 𝕝] [Algebra 𝕜 𝕝] : Algebra 𝕜 (IncidenceAlgebra 𝕝 α) where
   toFun c := algebraMap 𝕜 𝕝 c • (1 : IncidenceAlgebra 𝕝 α)

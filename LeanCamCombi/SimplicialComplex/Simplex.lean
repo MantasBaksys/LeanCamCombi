@@ -40,25 +40,24 @@ lemma combiFrontier_subset_convexHull : combiFrontier 𝕜 s ⊆ convexHull 𝕜
 
 lemma combiInterior_subset_convexHull : combiInterior 𝕜 s ⊆ convexHull 𝕜 ↑s := diff_subset _ _
 
-lemma combiFrontier_empty : combiFrontier 𝕜 (∅ : Finset E) = ∅ := by
+@[simp] lemma combiFrontier_empty : combiFrontier 𝕜 (∅ : Finset E) = ∅ := by
   apply Set.eq_empty_of_subset_empty
   convert combiFrontier_subset_convexHull
   rw [Finset.coe_empty, convexHull_empty]
 
-lemma combiInterior_empty : combiInterior 𝕜 (∅ : Finset E) = ∅ := by
+@[simp] lemma combiInterior_empty : combiInterior 𝕜 (∅ : Finset E) = ∅ := by
   apply Set.eq_empty_of_subset_empty
   convert combiInterior_subset_convexHull
   rw [Finset.coe_empty, convexHull_empty]
 
-lemma combiFrontier_singleton : combiFrontier 𝕜 ({x} : Finset E) = ∅ := by
-  apply Set.eq_empty_of_subset_empty
-  rintro y hy
+@[simp] lemma combiFrontier_singleton : combiFrontier 𝕜 ({x} : Finset E) = ∅ := by
+  refine eq_empty_of_subset_empty fun y hy ↦ ?_
   rw [mem_combiFrontier_iff] at hy
   obtain ⟨s, hs, hys⟩ := hy
   rw [Finset.eq_empty_of_ssubset_singleton hs] at hys
   simp at hys
 
-lemma combiInterior_singleton : combiInterior 𝕜 ({x} : Finset E) = {x} := by
+@[simp] lemma combiInterior_singleton : combiInterior 𝕜 ({x} : Finset E) = {x} := by
   unfold combiInterior
   rw [combiFrontier_singleton]
   simp
@@ -223,7 +222,7 @@ lemma frontiers_agree_of_full_dimensional [FiniteDimensional ℝ E]
     · exact subset_closure (convexHull_mono hts.1 hx)
     · rintro h
       sorry
-  --have :=  finset.convex_hull_eq,
+  --have :=  finset.convexHull_eq,
   · rintro ⟨h, g⟩
     sorry
 

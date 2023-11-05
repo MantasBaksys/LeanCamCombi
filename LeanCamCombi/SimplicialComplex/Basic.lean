@@ -102,26 +102,27 @@ end OrderedRing
 section LinearOrderedField
 variable [LinearOrderedField 𝕜] [AddCommGroup E] [Module 𝕜 E] {K : SimplicialComplex 𝕜 E} {x y : E}
   {s t : Finset E} {A : Set (Finset E)} {m n : ℕ}
-variable {𝕜 E}
 
 lemma cells_subset_facets [FiniteDimensional 𝕜 E] : K.cells ⊆ K.facets := by
-  rintro s ⟨hs, hscard⟩ by_contra
+  rintro s ⟨hs, hscard⟩
+  by_contra h
   obtain ⟨t, ht, hst⟩ := (not_facet_iff_subface hs).mp h
   have := card_lt_card hst
   have := face_dimension_le_space_dimension ht
   linarith
 
-lemma simplex_combiInteriors_split_interiors (ht : AffineIndependent 𝕜 (coe : (t : Set E) → E))
+lemma simplex_combiInteriors_split_interiors (ht : AffineIndependent 𝕜 ((↑) : t → E))
     (hst : convexHull 𝕜 (s : Set E) ⊆ convexHull 𝕜 ↑t) :
     ∃ u, u ⊆ t ∧ combiInterior 𝕜 s ⊆ combiInterior 𝕜 u := by
-  let K := simplicial_complex.of_simplex ht
+  classical
+  let K := SimplicialComplex.ofSimplex ht
   let F := t.powerset.filter fun v : Finset E => (s : Set E) ⊆ convexHull 𝕜 ↑v
   sorry
 /-obtain ⟨u, hu, humin⟩ := inf' _
   (begin
     use t,
     simp only [true_and, mem_powerset_self, mem_filter],
-    exact subset.trans (subset_convex_hull 𝕜 _) hst,
+    exact subset.trans (subset_convexHull 𝕜 _) hst,
   end : F.nonempty)
   begin
     rintro A B hA hB,
@@ -133,14 +134,14 @@ lemma simplex_combiInteriors_split_interiors (ht : AffineIndependent 𝕜 (coe :
   simp at hu,
   use [u, hu.1],
   rintro x hxs,
-  use convex_hull_min hu.2 (convex_convex_hull 𝕜 _) hxs.1,
+  use convexHull_min hu.2 (convex_convexHull 𝕜 _) hxs.1,
   rintro hxu,
   rw mem_combiFrontier_iff' at hxu,
   obtain ⟨v, hvu, hxv⟩ := hxu,
   apply hvu.2 (humin v _),
   simp,
   use [subset.trans hvu.1 hu.1],
-  rw convex_hull_eq _ at ⊢ hu,
+  rw convexHull_eq _ at ⊢ hu,
   obtain ⟨v, hvpos, hvsum, hvcenter⟩ := combiInterior_subset_positive_weighings hxs,
   obtain ⟨w, hwpos, hwsum, hwcenter⟩ := combiInterior_subset_positive_weighings hxv,
   let u : E → E → 𝕜 := λ a, if ha : a ∈ s then classical.some (hu.2 ha) else (λ b, 0),
@@ -159,12 +160,12 @@ lemma simplex_combiInteriors_split_interiors (ht : AffineIndependent 𝕜 (coe :
 /-rintro y (hys : y ∈ s),
   obtain ⟨v, hvpos, hvsum, hvcenter⟩ := combiInterior_subset_positive_weighings hxs,
   obtain ⟨w, hwpos, hwsum, hwcenter⟩ := combiInterior_subset_positive_weighings hxv,-/
---rw mem_convex_hull,
+--rw mem_convexHull,
 /-by_contra hsv,
   obtain ⟨y, hys, hyv⟩ := not_subset.1 hsv,-/
 /-apply hxs.2,
   rw mem_combiFrontier_iff at ⊢,
-  use [s.filter (λ w : E, w ∈ convex_hull 𝕜 (v : set E)), filter_subset _ _],
+  use [s.filter (λ w : E, w ∈ convexHull 𝕜 (v : set E)), filter_subset _ _],
   { rintro hsv,
     apply hvu.2 (humin v _),
     simp,
@@ -174,17 +175,16 @@ lemma simplex_combiInteriors_split_interiors (ht : AffineIndependent 𝕜 (coe :
     simp at this,
     exact this.2 },
   { simp,
-    apply convex_hull_mono (subset_inter (subset.refl _) _) hxs.1, by_contra hsv,
+    apply convexHull_mono (subset_inter (subset.refl _) _) hxs.1, by_contra hsv,
     rw not_subset at hsv,
-    /-suffices hsv : ↑s ⊆ convex_hull 𝕜 ↑v,
-    { apply convex_hull_mono (subset_inter (subset.refl _) hsv) hxs.1,
+    /-suffices hsv : ↑s ⊆ convexHull 𝕜 ↑v,
+    { apply convexHull_mono (subset_inter (subset.refl _) hsv) hxs.1,
     },-/
     sorry
   }-/
 
 lemma simplex_combiInteriors_split_interiors_nonempty (hs : s.Nonempty)
-    (ht : AffineIndependent 𝕜 (coe : (t : Set E) → E))
-    (hst : convexHull 𝕜 (s : Set E) ⊆ convexHull 𝕜 ↑t) :
+    (ht : AffineIndependent 𝕜 ((↑) : t → E)) (hst : convexHull 𝕜 (s : Set E) ⊆ convexHull 𝕜 ↑t) :
     ∃ u, u ⊆ t ∧ u.Nonempty ∧ combiInterior 𝕜 s ⊆ combiInterior 𝕜 u := by sorry
 
 end LinearOrderedField

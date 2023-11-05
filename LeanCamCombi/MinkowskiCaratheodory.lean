@@ -20,9 +20,9 @@ variable {E : Type*} [NormedAddCommGroup E] [NormedSpace ℝ E] [FiniteDimension
 the convex hull of its extreme points. -/
 lemma convexHull_extremePoints (hscomp : IsCompact s) (hsconv : Convex ℝ s) :
     convexHull ℝ (s.extremePoints ℝ) = s := by sorry
-/-let B := convex_hull ℝ (s.extreme_points ℝ),
+/-let B := convexHull ℝ (s.extreme_points ℝ),
   have hBA : B ⊆ s :=
-    convex_hull_min (λ x hx, hx.1) hsconv,
+    convexHull_min (λ x hx, hx.1) hsconv,
   refine subset.antisymm _ hBA, by_contra hAB,
   have hABdiff : (s \ B).nonempty := nonempty_diff.2 hAB,
   obtain ⟨x, hxA, hxB⟩ := id hABdiff,

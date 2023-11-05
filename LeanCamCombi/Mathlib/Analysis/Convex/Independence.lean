@@ -14,7 +14,7 @@ lemma AffineIndependent.convexIndependent {p : ι → E} (hp : AffineIndependent
   by_contra
   sorry
 
--- rw [finset.convex_hull_eq] at hx,
+-- rw [finset.convexHull_eq] at hx,
 -- rcases hx with ⟨w, hw₀, hw₁, x_eq⟩,
 -- have : s.inj_on p := hp.injective.inj_on _,
 -- rw finset.center_mass_eq_of_sum_1 _ _ hw₁ at x_eq,

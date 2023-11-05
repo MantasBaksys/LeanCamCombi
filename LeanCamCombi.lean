@@ -16,6 +16,7 @@ import LeanCamCombi.Kneser.Mathlib
 import LeanCamCombi.Kneser.MulStab
 import LeanCamCombi.KruskalKatona
 import LeanCamCombi.LittlewoodOfford
+import LeanCamCombi.Mathlib.Algebra.BigOperators.LocallyFinite
 import LeanCamCombi.Mathlib.Algebra.Group.Defs
 import LeanCamCombi.Mathlib.Algebra.IndicatorFunction
 import LeanCamCombi.Mathlib.Algebra.Order.Group.Defs
@@ -82,6 +83,7 @@ import LeanCamCombi.Mathlib.Order.ConditionallyCompleteLattice.Basic
 import LeanCamCombi.Mathlib.Order.Disjoint
 import LeanCamCombi.Mathlib.Order.Hom.Lattice
 import LeanCamCombi.Mathlib.Order.Hom.Set
+import LeanCamCombi.Mathlib.Order.LocallyFinite
 import LeanCamCombi.Mathlib.Order.Partition.Equipartition
 import LeanCamCombi.Mathlib.Order.Partition.Finpartition
 import LeanCamCombi.Mathlib.Order.Sublattice

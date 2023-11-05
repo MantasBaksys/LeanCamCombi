@@ -78,12 +78,12 @@ def ofSubcomplex' (K : SimplicialComplex 𝕜 E) (faces : Set (Finset E)) (subse
   down_closed hs hts ht := down_closed hs hts <| nonempty_iff_ne_empty.2 ht
   inter_subset_convexHull hs ht := K.inter_subset_convexHull (subset hs) (subset ht)
 
-lemma of_subcomplex_le (K : SimplicialComplex 𝕜 E) (faces) {subset down_closed} :
+lemma ofSubcomplex_le (K : SimplicialComplex 𝕜 E) (faces) {subset down_closed} :
     K.ofSubcomplex' faces subset down_closed ≤ K := subset
 
-lemma of_subcomplex_bot (faces) {subset down_closed} :
+lemma ofSubcomplex_bot (faces) {subset down_closed} :
     (⊥ : SimplicialComplex 𝕜 E).ofSubcomplex' faces subset down_closed = ⊥ :=
-  le_bot_iff.1 <| of_subcomplex_le _ _
+  le_bot_iff.1 <| ofSubcomplex_le _ _
 
 lemma mem_of_mem_convexHull (hx : x ∈ K.vertices) (hs : s ∈ K)
     (hxs : x ∈ convexHull 𝕜 (s : Set E)) : x ∈ s := by
@@ -107,7 +107,7 @@ variable [LinearOrderedField 𝕜] [AddCommGroup E] [Module 𝕜 E] {K : Simplic
 /-- A constructor for simplicial complexes by specifying a set of faces to close downward. -/
 @[simps]
 def ofSetClosure (indep : ∀ {s : Finset E}, s ∈ A → AffineIndependent 𝕜 ((↑) : s → E))
-    (inter_subset_convex_hull :
+    (inter_subset_convexHull :
       ∀ {s t}, s ∈ A → t ∈ A → convexHull 𝕜 ↑s ∩ convexHull 𝕜 ↑t ⊆ convexHull 𝕜 (s ∩ t : Set E)) :
     SimplicialComplex 𝕜 E where
   faces := {s | s.Nonempty ∧ ∃ t, t ∈ A ∧ s ⊆ t}
@@ -117,7 +117,7 @@ def ofSetClosure (indep : ∀ {s : Finset E}, s ∈ A → AffineIndependent 𝕜
   inter_subset_convexHull := sorry
     -- rintro v s ⟨hv, t, ht, hvt⟩ ⟨hs, u, hu, hsu⟩ x ⟨hxv, hxs⟩
     -- have hxtu : x ∈ convexHull 𝕜 (t ∩ u : Set E) :=
-    --   inter_subset_convex_hull ht hu ⟨convexHull_mono hvt hxv, convexHull_mono hsu hxs⟩
+    --   inter_subset_convexHull ht hu ⟨convexHull_mono hvt hxv, convexHull_mono hsu hxs⟩
     -- have hxvu : x ∈ convexHull 𝕜 (v ∩ u : Set E) := by
     --   have := AffineIndependent.subset_convexHull_inter (indep ht) hvt (inter_subset_left t u)
     --   norm_cast at this hxtu

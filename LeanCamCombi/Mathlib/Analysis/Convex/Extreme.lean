@@ -41,14 +41,14 @@ lemma extremePoints_convexHull_eq_iff_convexIndependent :
   suffices h : x₁ ∈ convexHull 𝕜 (s \ {x}) ∧ x₂ ∈ convexHull 𝕜 (s \ {x})
   · exact hs _ hxs (convex_iff_openSegment_subset.1 (convex_convexHull 𝕜 _) h.1 h.2 hx.1)
   have hx₁₂ : segment 𝕜 x₁ x₂ ⊆ convexHull 𝕜 s := (convex_convexHull 𝕜 _).segment_subset hx₁ hx₂
-  -- rw convex_hull_eq at hx₁ hx₂,
+  -- rw convexHull_eq at hx₁ hx₂,
   -- obtain ⟨ι₁, t₁, w₁, z₁, hw₁₀, hw₁₁, hz₁, rfl⟩ := hx₁,
   -- obtain ⟨ι₂, t₂, w₂, z₂, hw₂₀, hw₂₁, hz₂, rfl⟩ := hx₂,
   sorry
 
--- refine ⟨erase_subset_convex_hull_erase hx₁₂ (subset_convex_hull 𝕜 _ $
---   open_segment_subset_segment _ _ hx.1) _, erase_subset_convex_hull_erase hx₁₂
---   (subset_convex_hull 𝕜 _ $ open_segment_subset_segment _ _ hx.1) _⟩,
+-- refine ⟨erase_subset_convexHull_erase hx₁₂ (subset_convexHull 𝕜 _ $
+--   open_segment_subset_segment _ _ hx.1) _, erase_subset_convexHull_erase hx₁₂
+--   (subset_convexHull 𝕜 _ $ open_segment_subset_segment _ _ hx.1) _⟩,
 -- { rw [mem_diff, mem_singleton_iff],
 --   refine ⟨left_mem_segment _ _, λ h, hx.2 h _⟩,
 --   rw [h, left_mem_open_segment_iff] at hx,
@@ -171,13 +171,13 @@ lemma ConvexIndependent.eq_of_convexHull_eq_convexHull {s t : Finset E}
   (hs.subset_of_convexHull_eq_convexHull h).antisymm <| ht.subset_of_convexHull_eq_convexHull h.symm
 
 /- deprecated because generalised by `extremePoints_convexHull_eq_iff_convexIndependent`
-lemma extreme_to_convex_hull_of_affine_independent {s : finset E} (hx : x ∈ s)
+lemma extreme_to_convexHull_of_affine_independent {s : finset E} (hx : x ∈ s)
   (hs : affine_independent 𝕜 (λ p, p : (s : set E) → E)) :
-  x ∈ (convex_hull 𝕜 ↑s : set E).extreme_points :=
+  x ∈ (convexHull 𝕜 ↑s : set E).extreme_points :=
 begin
-  refine ⟨subset_convex_hull 𝕜 _ hx, _⟩,
+  refine ⟨subset_convexHull 𝕜 _ hx, _⟩,
   rintro y y' hy hy' t,
-  rw finset.convex_hull_eq at hy hy',
+  rw finset.convexHull_eq at hy hy',
   obtain ⟨w, hw₀, hw₁, hy⟩ := hy,
   obtain ⟨w', hw'₀, hw'₁, hy'⟩ := hy',
   rw segment_eq_image at t,

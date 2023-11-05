@@ -158,7 +158,7 @@ lemma Finset.min_le_card_mul (hs : s.Nonempty) (ht : t.Nonempty) :
         (WithTop.coe_le_coe.2 aux2).trans' fun h =>
         hstg.le.trans <| h.trans <| add_le_add_right aux2 _
 
-/-- The **Cauchy-Davenport theorem** for torsion-free groups. -/
+/-- The **Cauchy-Davenport Theorem** for torsion-free groups. -/
 @[to_additive "The **Cauchy-Davenport theorem** for torsion-free groups."]
 lemma Monoid.IsTorsionFree.card_add_card_sub_one_le_card_mul (h : IsTorsionFree α)
     {s t : Finset α} (hs : s.Nonempty) (ht : t.Nonempty) : s.card + t.card - 1 ≤ (s * t).card := by
@@ -168,16 +168,16 @@ end General
 
 /-! ### $$ℤ/nℤ$$ -/
 
-/-- The **Cauchy-Davenport theorem**. -/
+/-- The **Cauchy-Davenport Theorem**. -/
 lemma ZMod.min_le_card_add {p : ℕ} (hp : p.Prime) {s t : Finset (ZMod p)} (hs : s.Nonempty)
     (ht : t.Nonempty) : min p (s.card + t.card - 1) ≤ (s + t).card := by
   simpa only [ZMod.minOrder_of_prime hp, min_le_iff, Nat.cast_le] using Finset.min_le_card_add hs ht
 
 /-! ### Linearly ordered cancellative semigroups -/
 
-/-- The **Cauchy-Davenport theorem** for linearly ordered cancellative semigroups. -/
+/-- The **Cauchy-Davenport Theorem** for linearly ordered cancellative semigroups. -/
 @[to_additive
-      "The **Cauchy-Davenport theorem** for linearly ordered additive cancellative\nsemigroups."]
+"The **Cauchy-Davenport theorem** for linearly ordered additive cancellative\nsemigroups."]
 lemma Finset.card_add_card_sub_one_le_card_mul [LinearOrder α] [CancelSemigroup α]
     [CovariantClass α α (· * ·) (· ≤ ·)] [CovariantClass α α (swap (· * ·)) (· ≤ ·)]
     {s t : Finset α} (hs : s.Nonempty) (ht : t.Nonempty) : s.card + t.card - 1 ≤ (s * t).card := by
